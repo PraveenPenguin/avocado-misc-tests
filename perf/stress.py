@@ -45,7 +45,8 @@ class Stress(Test):
         Source:
          http://people.seas.harvard.edu/~apw/stress/stress-1.0.4.tar.gz
         """
-        tarball = self.fetch_asset('http://people.seas.harvard.edu/~apw/stress/stress-1.0.4.tar.gz')
+        tarball = self.fetch_asset(
+            'http://people.seas.harvard.edu/~apw/stress/stress-1.0.4.tar.gz')
         archive.extract(tarball, self.srcdir)
         stress_version = os.path.basename(tarball.split('.tar.')[0])
         self.sourcedir = os.path.join(self.srcdir, stress_version)
@@ -100,7 +101,7 @@ class Stress(Test):
         # Verbose flag
         args += '--verbose'
 
-        os.chdir(self.srcdir)
+        os.chdir(self.sourcedir)
         cmd = ('./src/stress %s' % args)
         process.run(cmd)
 
