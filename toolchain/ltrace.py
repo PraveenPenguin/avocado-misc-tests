@@ -76,6 +76,8 @@ class Ltrace(Test):
 
         self.src_lt = os.path.join(self.srcdir, "ltrace")
         os.chdir(self.src_lt)
+        process.run('patch -p1 < %s' %
+                    os.path.join(self.datadir, 'ltrace.patch'), shell=True)
         process.run('./autogen.sh')
         process.run('./configure')
         build.make(self.src_lt)
